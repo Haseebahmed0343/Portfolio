@@ -1,1 +1,1 @@
-https://portfolio-haseebahmedtariq.vercel.app/
+LINK: https://haseebahmedtariq.vercel.app/
