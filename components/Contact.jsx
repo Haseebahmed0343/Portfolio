@@ -8,7 +8,7 @@ import {
   MessageSquare,
   Tag,
 } from "lucide-react";
-
+import { useState } from "react";
 export default function Contact() {
   const contactInfo = [
     {
@@ -27,7 +27,7 @@ export default function Contact() {
       value: "Islamabad, Pakistan",
     },
   ];
-
+const [isSent, setIsSent] = useState(false);
   const handleSubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
@@ -39,6 +39,8 @@ export default function Contact() {
   });
 
   if (response.ok) {
+    setIsSent(true);
+    e.target.reset();
     alert("Message sent successfully!");
   }
 };
