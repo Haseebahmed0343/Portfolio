@@ -15,7 +15,7 @@ export default function Experience() {
       role: "Full-Stack Developer Intern",
       company: "SPS - Software Productivity Strategists",
       location: "Islamabad, Pakistan",
-      description: "Developed and maintained full-stack applications using Php-Laravel. Collaborated with the team to deliver high-quality, scalable software solutions.",
+      description: "Architected and maintained comprehensive web applications leveraging the Laravel framework, ensuring code quality and scalability through collaborative development and agile methodologies.",
       skills: ["Php", "Laravel", "MySQL", "Html/CSS"],
     },
   ];
