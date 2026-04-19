@@ -1,3 +1,4 @@
+"use client";
 import {
   Mail,
   Phone,
@@ -26,6 +27,21 @@ export default function Contact() {
       value: "Islamabad, Pakistan",
     },
   ];
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
+
+  const response = await fetch('/api/send', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+
+  if (response.ok) {
+    alert("Message sent successfully!");
+  }
+};
 
   return (
     <section
@@ -76,7 +92,7 @@ export default function Contact() {
         </div>
 
         <div className="bg-slate-900/40 border border-slate-800 rounded-4xl p-8 md:p-10 shadow-2xl">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="flex items-center gap-2 text-sm font-medium text-cyan-400">
@@ -86,6 +102,7 @@ export default function Contact() {
                   type="text"
                   placeholder="Your Name"
                   required
+                  name="name"
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors text-gray-200"
                 />
               </div>
@@ -98,6 +115,7 @@ export default function Contact() {
                   type="email"
                   placeholder="your@email.com"
                   required
+                  name="email"
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors text-gray-200"
                 />
               </div>
@@ -112,6 +130,7 @@ export default function Contact() {
                   type="text"
                   placeholder="+92-XXX-XXXXXXX"
                   required
+                  name="phone"
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors text-gray-200"
                 />
               </div>
@@ -124,6 +143,7 @@ export default function Contact() {
                   type="text"
                   placeholder="Subject"
                   required
+                  name="subject"
                   className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors text-gray-200"
                 />
               </div>
@@ -137,6 +157,7 @@ export default function Contact() {
                 rows={5}
                 placeholder="Your message..."
                 required
+                name="message"
                 className="w-full bg-slate-800/50 border border-slate-700 rounded-2xl px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors text-gray-200 resize-none"
               ></textarea>
             </div>
